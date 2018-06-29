@@ -1,0 +1,11 @@
+{% extends "core/base.html" %}
+
+{% block title%}Questions list{% endblock%}
+
+{% block content %}
+    {% for question in questions %}
+        <a href="{% url "questions:question_detail" pk=category.id qid=question.id %}">{{ question.name }}</a><br>
+    {% endfor %}<br><br>
+    <a href="{% url "categories:categories_list" %}">back to categories list</a>
+    <br>{{ username }}
+{% endblock %}

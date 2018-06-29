@@ -1,0 +1,30 @@
+{% extends "core/base.html" %}
+
+{% block toplinks %}
+            <li class="active"><a href="{% url "categories:categories_list" %}">Categories</a></li>
+{% endblock %}
+{% block head %}<h2>category {{ category.name }}</h2>{% endblock %}
+
+
+{% block smallheader %}
+    <a href="{% url "categories:category_edit" pk=category.pk %}">Edit Category</a><br>
+    <a href="{% url "questions:question_create" pk=category.pk %}">Create Question</a>
+
+{% endblock %}
+{% block text %}
+    {% for question in questions %}
+        <div class="panel-footer"><div class="panel panel-default">
+        <div class="panel-body">
+        <div class="poster">
+            <div> <a href="{% url "questions:question_detail" pk=category.pk qid=question.id %}">{{ question }}</a></div>
+        <div class="descr">
+            <div> {{ question.text }}</div>
+        </div>
+        </div>
+        </div>
+            author:{{ question.author }}; date:{{  question.updated }}
+        </div>
+    {% endfor %}
+    <br>{{ user }}
+{% endblock %}
+

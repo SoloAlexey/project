@@ -1,0 +1,19 @@
+{% extends "core/base.html" %}
+
+{% block toplinks %}
+            <li class="active"><a href="{% url "categories:categories_list" %}">Categories</a></li>
+{% endblock %}
+{% block head %}<h2>Создание категории</h2>{% endblock %}
+
+
+{% block smallheader %}
+    <form action="" method="post">
+        {%  csrf_token %}
+        {{ form }}
+    <input type="submit" value="Создать">
+    </form>
+{% endblock %}
+{% block text %}
+        <div></div>
+    <br>{{ user }}
+{% endblock %}

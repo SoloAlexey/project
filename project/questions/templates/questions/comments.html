@@ -1,0 +1,18 @@
+   <div> {{ question.id }}<br></div>
+{% for comment in question.comments.all %}
+    <div class="panel panel-default">
+            <div class="panel-body row">
+            <div class="poster">
+                <div> {{ comment }}<br></div>
+
+
+            <div class="descr">
+                <div> date:{{ comment.created }}</div>
+            </div>
+            </div>
+            </div>
+        <div class="panel-footer">
+            author:{{ comment.author }}
+        </div>
+    </div>
+{% endfor %}

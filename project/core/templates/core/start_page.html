@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{% extends "core/base.html" %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    {% block toplinks %}
+            <li class="active"><a href="{% url "categories:categories_list" %}">Categories</a></li>
+    {% endblock %}
+
+    {% block head %}<h2>This is start page</h2>{% endblock %}
+
+    {% block smallheader %}<h3>Welcome to Kayaks&Answers</h3>{% endblock %}
+    {% block text %}<p>Register and ask your questions</p>{% endblock %}
+</body>
+</html>

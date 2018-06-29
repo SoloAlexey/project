@@ -1,0 +1,26 @@
+{% extends "core/base.html" %}
+
+{% block head %}<h2>Categories list</h2>{% endblock %}
+
+<div class="panel-footer"><div class="panel panel-default">
+    <div class="panel-title">
+{% block smallheader %}
+    <a href="{% url "categories:category_create" %}">Создать категорию</a>
+    <div>
+        <form action="" method="get">
+           {{ categories_form }}
+            <button>Go</button>
+        </form>
+    </div>
+    </div>
+{% endblock %}
+<div class="panel-body">
+{% block text %}
+    {% for category in categories %}
+        <a href="{% url "categories:category_detail" pk=category.id %}">{{ category.name }}</a>
+        {%  if not forloop.last %},  {% endif %}
+    {% endfor %}
+    <br>{{ user }}
+{% endblock %}
+</div>
+

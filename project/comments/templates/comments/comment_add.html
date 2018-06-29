@@ -1,0 +1,21 @@
+{% extends "core/base.html" %}
+
+{% block toplinks %}
+            <li class="active"><a href="{% url "categories:categories_list" %}">Categories</a></li>
+{% endblock %}
+{% block head %}{% if user.id == None %}
+ <h2>Пожалуйста залогиньтесь чтобы комментировать</h2>{
+{% endif %}{% endblock %}
+
+
+{% block smallheader %}
+    <form action="" method="post">
+        {%  csrf_token %}
+        {{ form }}
+    <input type="submit" value="Создать">
+    </form>
+{% endblock %}
+{% block text %}
+        <div></div>
+    <br>{{ user }}
+{% endblock %}

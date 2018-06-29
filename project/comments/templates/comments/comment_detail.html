@@ -1,0 +1,7 @@
+{% extends "comments/base_comments.html" %}
+
+{% block content %}
+    <h2>Comment blalaal</h2>
+    <a href="{% url "comments:comments_list" pk=category.id qid=question.qid %}">comments</a> <br>
+    <br>{{ username }}
+{% endblock %}

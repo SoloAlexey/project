@@ -1,0 +1,11 @@
+{% extends "core/base.html" %}
+
+{% block title%}Comments list{% endblock%}
+
+{% block content %}
+    {% for comment in comments %}
+        <a href="{% url "comments:comment_detail" pk=category.id qid=question.qid cid=comment.cid%}">{{ comment.name }}</a><br>
+    {% endfor %}<br><br>
+    <a href="{% url "comments:comments_list" pk=category.id qid=question.qid %}">back to categories list</a>
+    <br>{{ username }}
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends "core/base.html" %}
+
+
+{% block toplinks %}
+     <li class="active"><a href="{% url "categories:categories_list" %}">Categories</a></li>
+     <li class="active"><a href="{% url "categories:category_detail" pk=catid %}">back to category</a></li>
+{% endblock %}
+{% block head %}<h2>{{ question.name }}</h2>{% endblock %}
+
+
+{% block smallheader %}
+
+    <div class="panel-footer"><div class="panel panel-default">
+        <div class="panel-body">
+            {{ question.text }}
+            {% if question.author.id == user.id %}
+                <a href="{% url "questions:question_edit" pk=catid qid=question.pk %}">Edit</a><br><br>
+            {% endif %}
+                <a href="{% url "comments:comment_add" pk=catid qid=question.pk%}">Add comment</a><br>
+        </div>
+            author:{{ question.author }}; date:{{  question.updated }}
+        </div>
+    </div>
+{% endblock %}
+
+{% block text %}
+    <h3>Comments:</h3>
+    {% for comment in comments %}
+    <div class="panel panel-default">
+            <div class="panel-body row">
+            <div class="poster">
+                <div> {{ comment }}<br></div>
+                {% if comment.author.id == user.id %}
+
+                    <a href="{% url "comments:comment_edit" pk=catid qid=question.pk cid=comment.pk%}">Edit</a><br><br>
+                {% endif %}
+
+            <div class="descr">
+                <div> date:{{ comment.created }}</div>
+            </div>
+            </div>
+            </div>
+        <div class="panel-footer">
+            author:{{ comment.author }}
+        </div>
+    </div>
+{% endfor %}
+    <br>{{ user }}
+{% endblock %}
